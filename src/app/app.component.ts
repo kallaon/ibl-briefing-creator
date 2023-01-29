@@ -59,6 +59,11 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  onResetForm() {
+    this.form.reset();
+    this.response = null;
+  }
+
   get countriesControl() {
     return this.form && this.form.get('countries');
   }
@@ -134,7 +139,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._dataService
       .postData(this._createBriefingRequest())
       .pipe(
-        delay(3000),
+        //delay(3000),
         finalize(() => this._setFormState(true)),
         takeUntil(this._destroy$)
       )

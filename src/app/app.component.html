@@ -1,85 +1,80 @@
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="IBL" />
-    <meta name="author" content="Daniel Ježík" />
 
-    <title>iblsoft - Daniel Ježík</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="IBL" />
+  <meta name="author" content="Daniel Ježík" />
 
-  <body class="bg-light">
-    <div class="container">
-      <div class="pt-5 text-center">
-        <img
+  <title>iblsoft - Daniel Ježík</title>
+</head>
+
+<body class="bg-light">
+  <div class="container">
+    <div class="pt-5 text-center">
+      <img
           class="d-block mx-auto mb-1"
           src="https://www.iblsoft.com/wp-content/uploads/2017/10/logo-web.png"
         />
-        <h1>Briefing creator</h1>
-      </div>
+      <h1>Briefing creator</h1>
+    </div>
 
-      <div class="row justify-content-center">
-        <div class="col-md-8 order-md-1">
-          <form [formGroup]="form">
-            <label class="form-check-label mb-1" for="messageTypes">
+    <div class="row justify-content-center">
+      <div class="col-md-10 order-md-1">
+        <form [formGroup]="form">
+          <label class="form-check-label mb-1" for="messageTypes">
               Message types
             </label>
-            <div class="row mb-2">
-              <ng-container formGroupName="messageTypes">
-                <div class="col-12">
-                  <div class="form-check">
-                    <input
+          <div class="row mb-2">
+            <ng-container formGroupName="messageTypes">
+              <div class="col-12">
+                <div class="form-check form-check-inline">
+                  <input
                       formControlName="metar"
                       class="form-check-input"
                       type="checkbox"
                       value="METAR"
                       id="metar"
                     />
-                    <label class="form-check-label" for="metar"> METAR </label>
-                  </div>
-                  <div class="form-check">
-                    <input
+                  <label class="form-check-label" for="metar"> METAR </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
                       formControlName="sigmet"
                       class="form-check-input"
                       type="checkbox"
                       value="SIGMET"
                       id="sigmet"
                     />
-                    <label class="form-check-label" for="sigmet">
+                  <label class="form-check-label" for="sigmet">
                       SIGMET
                     </label>
-                  </div>
-                  <div class="form-check">
-                    <input
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
                       formControlName="taf"
                       class="form-check-input"
                       type="checkbox"
                       value="TAF"
                       id="taf"
                     />
-                    <label class="form-check-label" for="taf"> TAF </label>
-                  </div>
+                  <label class="form-check-label" for="taf"> TAF </label>
                 </div>
-                <div
-                  class="col invalid-feedback d-block"
-                  *ngIf="
+              </div>
+              <div class="col invalid-feedback d-block" *ngIf="
                     form.controls.messageTypes.errors
                       ?.atLeastOneCheckedCheckboox &&
                     form.controls.messageTypes.touched
-                  "
-                >
-                  At least one message type has to be selected
-                </div>
-              </ng-container>
-            </div>
+                  ">
+                At least one message type has to be selected
+              </div>
+            </ng-container>
+          </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="stations">Stations</label>
-                <input
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="stations">Stations</label>
+              <input
                   formControlName="stations"
                   type="text"
                   class="form-control"
@@ -87,86 +82,104 @@
                   placeholder="LZIB LKPR EGLL..."
                   [required]="!countriesControl.value"
                 />
-                <small class="text-muted"
-                  >Multiple stations must be separated by space</small
-                >
-                <div
-                  class="invalid-feedback d-block"
-                  *ngIf="
+              <small class="text-muted"
+                  >Multiple stations must be separated by space</small>
+              <div class="invalid-feedback d-block" *ngIf="
                     !countriesOrStations &&
                     !countriesControl.value &&
                     stationsControl.touched
-                  "
-                >
-                  This field is required
-                </div>
-                <div
-                  class="invalid-feedback d-block"
-                  *ngIf="stationsControl.errors?.pattern"
-                >
-                  This format is not allowed
-                </div>
+                  ">
+                This field is required
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="countries">Countries</label>
-                <input
+              <div class="invalid-feedback d-block" *ngIf="stationsControl.errors?.pattern">
+                This format is not allowed
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="countries">Countries</label>
+              <input
                   type="text"
                   class="form-control"
                   id="countries"
                   formControlName="countries"
                   [required]="!stationsControl.value"
                 />
-                <small class="text-muted"
-                  >Multiple countries must be separated by space</small
-                >
-                <div
-                  class="invalid-feedback d-block"
-                  *ngIf="
+              <small class="text-muted"
+                  >Multiple countries must be separated by space</small>
+              <div class="invalid-feedback d-block" *ngIf="
                     !countriesOrStations &&
                     !stationsControl.value &&
                     countriesControl.touched
-                  "
-                >
-                  This field is required
-                </div>
-                <div
-                  class="invalid-feedback d-block"
-                  *ngIf="countriesControl.errors?.pattern"
-                >
-                  This format is not allowed
-                </div>
+                  ">
+                This field is required
+              </div>
+              <div class="invalid-feedback d-block" *ngIf="countriesControl.errors?.pattern">
+                This format is not allowed
               </div>
             </div>
+          </div>
 
-            <hr class="mb-4" />
-            <button
+          <hr class="mb-4" />
+          <div class="row">
+            <div class="col-md-6">
+              <button
               [disabled]="isLoading"
-              class="btn btn-primary btn-block mb-4"
-              (click)="onSubmit()"
+              class="btn btn-danger btn-block"
+              (click)="onResetForm()"
             >
-              <span
-                class="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-                *ngIf="isLoading"
-              ></span>
-
-              {{ isLoading ? 'Loading briefing data' : 'Create briefing' }}
+              Reset form
             </button>
-          </form>
-          <div class="row mb-2">
-            <ng-container *ngIf="response">
-              <ng-container *ngIf="!response?.error; else errorTemplate">
-                <ng-container *ngIf="response?.result?.length > 0; else noData">
-                  tu bude tabulka
-                </ng-container>
+            </div>
+            <div class="col-md-6">
+              <button
+                  [disabled]="isLoading"
+                  class="btn btn-primary btn-block"
+                  (click)="onSubmit()"
+                >
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                    *ngIf="isLoading"
+                  ></span>
+
+                  {{ isLoading ? 'Loading briefing data' : 'Create briefing' }}
+                </button>
+            </div>
+
+          </div>
+        </form>
+        <div class="row mb-2 mt-4">
+          <ng-container *ngIf="response">
+            <ng-container *ngIf="!response?.error; else errorTemplate">
+              <ng-container *ngIf="response?.result?.length > 0; else noData">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Station identifier</th>
+                      <th scope="col">Report time</th>
+                      <th scope="col">Report body</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of response.result">
+                      <td>{{ result.stationId }}</td>
+                      <td>
+                        {{ result.reportTime | date: 'd.M.yyyy hh:mm:ss' }}
+                      </td>
+                      <td><span [innerHtml]="result.textHTML"></span></td>
+                    </tr>
+                  </tbody>
+                </table>
               </ng-container>
             </ng-container>
-          </div>
+          </ng-container>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 <ng-template #noData>
   <div class="col alert alert-warning mx-3" role="alert">

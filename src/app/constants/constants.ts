@@ -1,6 +1,6 @@
 export enum ReportTypes {
   METAR = 'METAR',
-  TAF = 'TAF',
+  TAF = 'TAF_LONGTAF',
   SIGMET = 'SIGMET',
 }
 
