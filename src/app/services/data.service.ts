@@ -1,14 +1,15 @@
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IBLRequest } from '../models/models';
 
+@Injectable()
 export class DataService {
   private readonly _API_URL = 'https://ogcie.iblsoft.com/ria/opmetquery';
 
-  constructor(
-    private readonly _httpClient: HttpClient,
-  ) {}
+  constructor(private readonly _httpClient: HttpClient) {}
 
-  postData(data: any): Observable<any> {
+  postData(data: IBLRequest): Observable<any> {
     return this._httpClient.post<any>(this._API_URL, data);
   }
 }

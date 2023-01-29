@@ -2,7 +2,7 @@ import { ReportTypes } from "../constants/constants";
 
 export interface Params {
   id: string;
-  reportTypes: ReportTypes[];
+  reportTypes: string[];
   stations: string[];  // TODO stations
   countries: string[];
 }
@@ -11,7 +11,6 @@ export interface IBLRequest {
   id: string;
   method: string;
   params: Params[];
-
 }
 
 export interface Result {

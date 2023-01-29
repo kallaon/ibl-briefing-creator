@@ -1,5 +1,8 @@
 export enum ReportTypes {
   METAR = 'METAR',
-  TAF_LONGTAF = 'TAF_LONGTAF',
-  SIGMET = 'SIGMET'
+  TAF = 'TAF',
+  SIGMET = 'SIGMET',
 }
+
+export const wordValidationRegex = /^[A-Z]+( [A-Z]+)*$/;
+export const QUERY_TYPE = 'query';
